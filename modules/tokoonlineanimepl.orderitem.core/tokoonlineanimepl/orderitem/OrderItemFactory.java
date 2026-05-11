@@ -1,7 +1,7 @@
 package tokoonlineanimepl.orderitem;
 
 import tokoonlineanimepl.orderitem.core.model.OrderItem;
-import tokoonlineanimepl.orderitem.core.model.OrderItemImpl;
+import tokoonlineanimepl.orderitem.core.model.invalid;
 import java.lang.reflect.Constructor;
 import java.util.logging.Logger;
 

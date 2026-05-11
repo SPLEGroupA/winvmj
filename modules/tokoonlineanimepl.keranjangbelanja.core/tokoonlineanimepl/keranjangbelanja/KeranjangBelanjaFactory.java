@@ -1,7 +1,7 @@
 package tokoonlineanimepl.keranjangbelanja;
 
 import tokoonlineanimepl.keranjangbelanja.core.model.KeranjangBelanja;
-import tokoonlineanimepl.keranjangbelanja.core.model.KeranjangBelanjaImpl;
+import tokoonlineanimepl.keranjangbelanja.core.model.invalid;
 import java.lang.reflect.Constructor;
 import java.util.logging.Logger;
 

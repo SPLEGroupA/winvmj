@@ -13,3 +13,6 @@ build/
 *.swo
 *.class
 .pem
+src/
+src-gen
+.gradle/
