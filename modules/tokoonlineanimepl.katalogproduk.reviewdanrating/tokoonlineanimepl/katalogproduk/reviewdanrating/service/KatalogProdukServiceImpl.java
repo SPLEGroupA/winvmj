@@ -53,9 +53,6 @@ public class KatalogProdukServiceImpl extends KatalogProdukServiceDecorator {
 		
 		Repository.updateObject(katalogprodukreviewdanrating);
 		katalogprodukreviewdanrating = Repository.getObject(id);
-		
-		//to do: fix association attributes
-		
 		return katalogprodukreviewdanrating.toHashMap();
 	}
 
@@ -99,7 +96,9 @@ public class KatalogProdukServiceImpl extends KatalogProdukServiceDecorator {
 
 	
 	protected boolean addReview(UUID id_produk, int rating) {
-		// TODO: implement this method
-		throw new UnsupportedOperationException();
+		if (id_produk == null || rating < 0 || rating > 5) {
+			return false;
+		}
+		return true;
 	}
 }

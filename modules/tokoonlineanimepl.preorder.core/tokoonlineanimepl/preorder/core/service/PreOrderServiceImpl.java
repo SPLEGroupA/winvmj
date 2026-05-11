@@ -27,9 +27,6 @@ public class PreOrderServiceImpl extends PreOrderServiceComponent{
 		String status = (String) requestBody.get("status");
 		String produk_ref = (String) requestBody.get("produk_ref");
 		String akun_ref = (String) requestBody.get("akun_ref");
-		
-		//to do: fix association attributes
-		
 		PreOrder preorder = PreOrderFactory.createPreOrder("tokoonlineanimepl.preorder.core.model.PreOrderImpl", tanggal_rilis, status, produk_ref, akun_ref);
 		Repository.saveObject(preorder);
 		return preorder;
@@ -41,8 +38,6 @@ public class PreOrderServiceImpl extends PreOrderServiceComponent{
 		String status = (String) requestBody.get("status");
 		String produk_ref = (String) requestBody.get("produk_ref");
 		String akun_ref = (String) requestBody.get("akun_ref");
-		
-		//to do: fix association attributes
 		PreOrder preorder = PreOrderFactory.createPreOrder("tokoonlineanimepl.preorder.core.model.PreOrderImpl",id_preorder, tanggal_rilis, status, produk_ref, akun_ref);
 		Repository.saveObject(preorder);
 		return preorder;
@@ -59,9 +54,6 @@ public class PreOrderServiceImpl extends PreOrderServiceComponent{
 		preorder.setAkun_ref((String) requestBody.get("akun_ref"));
 		
 		Repository.updateObject(preorder);
-		
-		//to do: fix association attributes
-		
 		return preorder.toHashMap();
 		
 	}

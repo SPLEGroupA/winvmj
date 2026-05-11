@@ -39,8 +39,10 @@ public class KatalogProdukImpl extends KatalogProdukDecorator {
 	}
 
 	protected boolean checkEksklusif(UUID id_produk) {
-		// TODO: implement this method
-		throw new UnsupportedOperationException();
+		if (id_produk == null) {
+			return false;
+		}
+		return this.is_eksklusif;
 	}
 
 	public HashMap<String, Object> toHashMap() {

@@ -29,9 +29,6 @@ public class CartItemServiceImpl extends CartItemServiceComponent{
 		int harga_satuan = Integer.parseInt(harga_satuanStr);
 		String keranjang_ref = (String) requestBody.get("keranjang_ref");
 		String produk_ref = (String) requestBody.get("produk_ref");
-		
-		//to do: fix association attributes
-		
 		CartItem cartitem = CartItemFactory.createCartItem("tokoonlineanimepl.cartitem.core.model.CartItemImpl", quantity, harga_satuan, keranjang_ref, produk_ref);
 		Repository.saveObject(cartitem);
 		return cartitem;
@@ -45,8 +42,6 @@ public class CartItemServiceImpl extends CartItemServiceComponent{
 		int harga_satuan = Integer.parseInt(harga_satuanStr);
 		String keranjang_ref = (String) requestBody.get("keranjang_ref");
 		String produk_ref = (String) requestBody.get("produk_ref");
-		
-		//to do: fix association attributes
 		CartItem cartitem = CartItemFactory.createCartItem("tokoonlineanimepl.cartitem.core.model.CartItemImpl",id_cart_item, quantity, harga_satuan, keranjang_ref, produk_ref);
 		Repository.saveObject(cartitem);
 		return cartitem;
@@ -67,9 +62,6 @@ public class CartItemServiceImpl extends CartItemServiceComponent{
 		cartitem.setProduk_ref((String) requestBody.get("produk_ref"));
 		
 		Repository.updateObject(cartitem);
-		
-		//to do: fix association attributes
-		
 		return cartitem.toHashMap();
 		
 	}
@@ -113,12 +105,31 @@ public class CartItemServiceImpl extends CartItemServiceComponent{
 	}
 
 	public boolean setProduct(UUID id_produk, int quantity) {
-		// TODO: implement this method
-		throw new UnsupportedOperationException();
+		if (id_produk == null || quantity <= 0) {
+			return false;
+		}
+		List<CartItem> items = Repository.getAllObject("cartitem_impl");
+		boolean updated = false;
+		for (CartItem item : items) {
+			if (id_produk.toString().equals(item.getProduk_ref())) {
+				item.setQuantity(quantity);
+				Repository.updateObject(item);
+				updated = true;
+			}
+		}
+		return updated;
 	}
 
 	public boolean getByKeranjang(UUID id_keranjang) {
-		// TODO: implement this method
-		throw new UnsupportedOperationException();
+		if (id_keranjang == null) {
+			return false;
+		}
+		List<CartItem> items = Repository.getAllObject("cartitem_impl");
+		for (CartItem item : items) {
+			if (id_keranjang.toString().equals(item.getKeranjang_ref())) {
+				return true;
+			}
+		}
+		return false;
 	}
 }

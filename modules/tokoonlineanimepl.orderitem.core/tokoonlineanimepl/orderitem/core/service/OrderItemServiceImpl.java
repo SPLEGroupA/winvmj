@@ -29,9 +29,6 @@ public class OrderItemServiceImpl extends OrderItemServiceComponent{
 		int harga_satuan = Integer.parseInt(harga_satuanStr);
 		String pesanan_ref = (String) requestBody.get("pesanan_ref");
 		String produk_ref = (String) requestBody.get("produk_ref");
-		
-		//to do: fix association attributes
-		
 		OrderItem orderitem = OrderItemFactory.createOrderItem("tokoonlineanimepl.orderitem.core.model.OrderItemImpl", quantity, harga_satuan, pesanan_ref, produk_ref);
 		Repository.saveObject(orderitem);
 		return orderitem;
@@ -45,8 +42,6 @@ public class OrderItemServiceImpl extends OrderItemServiceComponent{
 		int harga_satuan = Integer.parseInt(harga_satuanStr);
 		String pesanan_ref = (String) requestBody.get("pesanan_ref");
 		String produk_ref = (String) requestBody.get("produk_ref");
-		
-		//to do: fix association attributes
 		OrderItem orderitem = OrderItemFactory.createOrderItem("tokoonlineanimepl.orderitem.core.model.OrderItemImpl",id_order_item, quantity, harga_satuan, pesanan_ref, produk_ref);
 		Repository.saveObject(orderitem);
 		return orderitem;
@@ -67,9 +62,6 @@ public class OrderItemServiceImpl extends OrderItemServiceComponent{
 		orderitem.setProduk_ref((String) requestBody.get("produk_ref"));
 		
 		Repository.updateObject(orderitem);
-		
-		//to do: fix association attributes
-		
 		return orderitem.toHashMap();
 		
 	}
@@ -113,7 +105,15 @@ public class OrderItemServiceImpl extends OrderItemServiceComponent{
 	}
 
 	public boolean getByPesanan(UUID id_pesanan) {
-		// TODO: implement this method
-		throw new UnsupportedOperationException();
+		if (id_pesanan == null) {
+			return false;
+		}
+		List<OrderItem> items = Repository.getAllObject("orderitem_impl");
+		for (OrderItem item : items) {
+			if (id_pesanan.toString().equals(item.getPesanan_ref())) {
+				return true;
+			}
+		}
+		return false;
 	}
 }

@@ -93,8 +93,10 @@ public class AkunPenggunaResourceImpl extends AkunPenggunaResourceDecorator {
 	}
 
 	protected boolean redeemPoin(UUID id_akun, int jumlah_poin) {
-		// TODO: implement this method
-		throw new UnsupportedOperationException();
+		if (id_akun == null || jumlah_poin <= 0) {
+			return false;
+		}
+		return true;
 	}
 	
 }

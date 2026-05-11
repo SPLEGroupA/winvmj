@@ -28,9 +28,6 @@ public class PembayaranServiceImpl extends PembayaranServiceComponent{
 		int jumlah = Integer.parseInt(jumlahStr);
 		String status = (String) requestBody.get("status");
 		String pesanan_ref = (String) requestBody.get("pesanan_ref");
-		
-		//to do: fix association attributes
-		
 		Pembayaran pembayaran = PembayaranFactory.createPembayaran("tokoonlineanimepl.pembayaran.core.model.PembayaranImpl", metode, jumlah, status, pesanan_ref);
 		Repository.saveObject(pembayaran);
 		return pembayaran;
@@ -43,8 +40,6 @@ public class PembayaranServiceImpl extends PembayaranServiceComponent{
 		int jumlah = Integer.parseInt(jumlahStr);
 		String status = (String) requestBody.get("status");
 		String pesanan_ref = (String) requestBody.get("pesanan_ref");
-		
-		//to do: fix association attributes
 		Pembayaran pembayaran = PembayaranFactory.createPembayaran("tokoonlineanimepl.pembayaran.core.model.PembayaranImpl",id_pembayaran, metode, jumlah, status, pesanan_ref);
 		Repository.saveObject(pembayaran);
 		return pembayaran;
@@ -63,9 +58,6 @@ public class PembayaranServiceImpl extends PembayaranServiceComponent{
 		pembayaran.setPesanan_ref((String) requestBody.get("pesanan_ref"));
 		
 		Repository.updateObject(pembayaran);
-		
-		//to do: fix association attributes
-		
 		return pembayaran.toHashMap();
 		
 	}

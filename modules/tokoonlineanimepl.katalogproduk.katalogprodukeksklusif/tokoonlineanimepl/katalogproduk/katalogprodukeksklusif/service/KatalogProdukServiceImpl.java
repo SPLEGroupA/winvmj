@@ -51,9 +51,6 @@ public class KatalogProdukServiceImpl extends KatalogProdukServiceDecorator {
 		
 		Repository.updateObject(katalogprodukkatalogprodukeksklusif);
 		katalogprodukkatalogprodukeksklusif = Repository.getObject(id);
-		
-		//to do: fix association attributes
-		
 		return katalogprodukkatalogprodukeksklusif.toHashMap();
 	}
 
@@ -97,7 +94,17 @@ public class KatalogProdukServiceImpl extends KatalogProdukServiceDecorator {
 
 	
 	protected boolean checkEksklusif(UUID id_produk) {
-		// TODO: implement this method
-		throw new UnsupportedOperationException();
+		if (id_produk == null) {
+			return false;
+		}
+		KatalogProduk produk = Repository.getObject(id_produk);
+		if (produk instanceof tokoonlineanimepl.katalogproduk.katalogprodukeksklusif.model.KatalogProdukImpl) {
+			return ((tokoonlineanimepl.katalogproduk.katalogprodukeksklusif.model.KatalogProdukImpl) produk).getIs_eksklusif();
+		}
+		return false;
+	}
+
+	public boolean checkEksklusifById(UUID id_produk) {
+		return checkEksklusif(id_produk);
 	}
 }

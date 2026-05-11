@@ -51,9 +51,6 @@ public class KatalogProdukServiceImpl extends KatalogProdukServiceDecorator {
 		
 		Repository.updateObject(katalogprodukkatalogprodukpreowned);
 		katalogprodukkatalogprodukpreowned = Repository.getObject(id);
-		
-		//to do: fix association attributes
-		
 		return katalogprodukkatalogprodukpreowned.toHashMap();
 	}
 
@@ -97,7 +94,14 @@ public class KatalogProdukServiceImpl extends KatalogProdukServiceDecorator {
 
 	
 	protected boolean checkPreOwned(UUID id_produk) {
-		// TODO: implement this method
-		throw new UnsupportedOperationException();
+		if (id_produk == null) {
+			return false;
+		}
+		KatalogProduk produk = Repository.getObject(id_produk);
+		if (produk instanceof tokoonlineanimepl.katalogproduk.katalogprodukpreowned.model.KatalogProdukImpl) {
+			String kondisi = ((tokoonlineanimepl.katalogproduk.katalogprodukpreowned.model.KatalogProdukImpl) produk).getKondisi();
+			return kondisi != null && !kondisi.equalsIgnoreCase("baru");
+		}
+		return false;
 	}
 }

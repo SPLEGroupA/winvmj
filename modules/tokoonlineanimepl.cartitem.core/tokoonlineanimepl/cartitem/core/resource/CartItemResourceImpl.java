@@ -82,13 +82,11 @@ public class CartItemResourceImpl extends CartItemResourceComponent{
 
 	
 	public boolean setProduct(UUID id_produk, int quantity) {
-		// TODO: implement this method
-		throw new UnsupportedOperationException();
+		return cartitemServiceImpl.setProduct(id_produk, quantity);
 	}
 
 	
 	public boolean getByKeranjang(UUID id_keranjang) {
-		// TODO: implement this method
-		throw new UnsupportedOperationException();
+		return cartitemServiceImpl.getByKeranjang(id_keranjang);
 	}
 }

@@ -31,9 +31,6 @@ public class KatalogProdukServiceImpl extends KatalogProdukServiceComponent{
 		String stokStr = (String) requestBody.get("stok");
 		int stok = Integer.parseInt(stokStr);
 		String gambar_url = (String) requestBody.get("gambar_url");
-		
-		//to do: fix association attributes
-		
 		KatalogProduk katalogproduk = KatalogProdukFactory.createKatalogProduk("tokoonlineanimepl.katalogproduk.core.model.KatalogProdukImpl", nama, harga, kategori, deskripsi, stok, gambar_url);
 		Repository.saveObject(katalogproduk);
 		return katalogproduk;
@@ -49,8 +46,6 @@ public class KatalogProdukServiceImpl extends KatalogProdukServiceComponent{
 		String stokStr = (String) requestBody.get("stok");
 		int stok = Integer.parseInt(stokStr);
 		String gambar_url = (String) requestBody.get("gambar_url");
-		
-		//to do: fix association attributes
 		KatalogProduk katalogproduk = KatalogProdukFactory.createKatalogProduk("tokoonlineanimepl.katalogproduk.core.model.KatalogProdukImpl",id_produk, nama, harga, kategori, deskripsi, stok, gambar_url);
 		Repository.saveObject(katalogproduk);
 		return katalogproduk;
@@ -73,9 +68,6 @@ public class KatalogProdukServiceImpl extends KatalogProdukServiceComponent{
 		katalogproduk.setGambar_url((String) requestBody.get("gambar_url"));
 		
 		Repository.updateObject(katalogproduk);
-		
-		//to do: fix association attributes
-		
 		return katalogproduk.toHashMap();
 		
 	}

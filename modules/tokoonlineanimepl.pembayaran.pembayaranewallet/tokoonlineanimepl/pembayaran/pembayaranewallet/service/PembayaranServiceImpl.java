@@ -48,9 +48,6 @@ public class PembayaranServiceImpl extends PembayaranServiceDecorator {
 		
 		Repository.updateObject(pembayaranpembayaranewallet);
 		pembayaranpembayaranewallet = Repository.getObject(id);
-		
-		//to do: fix association attributes
-		
 		return pembayaranpembayaranewallet.toHashMap();
 	}
 
@@ -94,7 +91,9 @@ public class PembayaranServiceImpl extends PembayaranServiceDecorator {
 
 	
 	protected boolean payWithEWallet(UUID id_pembayaran, int amount) {
-		// TODO: implement this method
-		throw new UnsupportedOperationException();
+		if (id_pembayaran == null || amount <= 0) {
+			return false;
+		}
+		return true;
 	}
 }

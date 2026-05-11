@@ -27,7 +27,7 @@ COPY . .
 COPY --from=builder /app/deps/ ./jars/
 
 # Move product JARs and lib JARs (includes monitoring module) to jars folder
-RUN mv tokoonlineanime.product.anipremium/*.jar ./jars/ 2>/dev/null || true && \
+RUN mv tokoonlineanimepl.product.anipremium/*.jar ./jars/ 2>/dev/null || true && \
     mv lib/*.jar ./jars/ 2>/dev/null || true
 
 # Set permissions
@@ -39,4 +39,4 @@ USER winvmj
 EXPOSE 7776
 
 # Run the application
-CMD ["java", "-cp", "jars/*:.", "tokoonlineanime.product.anipremium.AniPremium"]
+CMD ["java", "-cp", "jars/*:.", "tokoonlineanimepl.product.anipremium.AniPremium"]

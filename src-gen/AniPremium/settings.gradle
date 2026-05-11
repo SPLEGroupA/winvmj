@@ -4,4 +4,4 @@ plugins {
 }
 
 rootProject.name = 'AniPremium'
-include ':tokoonlineanime.product.anipremium'
+include ':tokoonlineanimepl.product.anipremium'

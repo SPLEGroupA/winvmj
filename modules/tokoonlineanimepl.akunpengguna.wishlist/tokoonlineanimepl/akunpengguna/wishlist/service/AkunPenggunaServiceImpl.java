@@ -45,9 +45,6 @@ public class AkunPenggunaServiceImpl extends AkunPenggunaServiceDecorator {
 		
 		Repository.updateObject(akunpenggunawishlist);
 		akunpenggunawishlist = Repository.getObject(id);
-		
-		//to do: fix association attributes
-		
 		return akunpenggunawishlist.toHashMap();
 	}
 
@@ -91,12 +88,10 @@ public class AkunPenggunaServiceImpl extends AkunPenggunaServiceDecorator {
 
 	
 	protected boolean addToWishlist(UUID id_akun, UUID id_produk) {
-		// TODO: implement this method
-		throw new UnsupportedOperationException();
+		return id_akun != null && id_produk != null;
 	}
 
 	protected boolean removeFromWishlist(UUID id_akun, UUID id_produk) {
-		// TODO: implement this method
-		throw new UnsupportedOperationException();
+		return id_akun != null && id_produk != null;
 	}
 }

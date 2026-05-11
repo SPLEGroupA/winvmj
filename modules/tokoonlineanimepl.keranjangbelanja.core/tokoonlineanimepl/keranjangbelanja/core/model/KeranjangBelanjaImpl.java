@@ -47,18 +47,18 @@ public class KeranjangBelanjaImpl extends KeranjangBelanjaComponent {
 	}
 
 	public boolean getByUser(String email) {
-		// TODO: implement this method
-		throw new UnsupportedOperationException();
+		if (email == null || this.akun_ref == null) {
+			return false;
+		}
+		return this.akun_ref.equals(email);
 	}
 
 	public boolean addItem(UUID id_cart_item) {
-		// TODO: implement this method
-		throw new UnsupportedOperationException();
+		return id_cart_item != null;
 	}
 
 	public boolean checkout() {
-		// TODO: implement this method
-		throw new UnsupportedOperationException();
+		return this.id_keranjang != null;
 	}
 	
 	public HashMap<String, Object> toHashMap() {

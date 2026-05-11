@@ -74,8 +74,10 @@ public class ManajemenPesananImpl extends ManajemenPesananComponent {
 	}
 
 	public boolean getByUser(String email) {
-		// TODO: implement this method
-		throw new UnsupportedOperationException();
+		if (email == null || this.akun_ref == null) {
+			return false;
+		}
+		return this.akun_ref.equals(email);
 	}
 	
 	public HashMap<String, Object> toHashMap() {

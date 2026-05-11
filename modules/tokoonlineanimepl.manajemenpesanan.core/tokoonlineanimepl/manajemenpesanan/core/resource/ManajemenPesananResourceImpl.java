@@ -82,7 +82,6 @@ public class ManajemenPesananResourceImpl extends ManajemenPesananResourceCompon
 
 	
 	public boolean getByUser(String email) {
-		// TODO: implement this method
-		throw new UnsupportedOperationException();
+		return manajemenpesananServiceImpl.getByUser(email);
 	}
 }

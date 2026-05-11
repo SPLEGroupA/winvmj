@@ -39,8 +39,10 @@ public class PembayaranImpl extends PembayaranDecorator {
 	}
 
 	protected boolean payWithEWallet(UUID id_pembayaran, int amount) {
-		// TODO: implement this method
-		throw new UnsupportedOperationException();
+		if (id_pembayaran == null || amount <= 0) {
+			return false;
+		}
+		return this.ewallet_provider != null && !this.ewallet_provider.isEmpty();
 	}
 
 	public HashMap<String, Object> toHashMap() {

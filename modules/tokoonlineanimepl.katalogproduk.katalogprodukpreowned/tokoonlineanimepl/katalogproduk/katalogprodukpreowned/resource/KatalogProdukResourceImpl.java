@@ -93,8 +93,10 @@ public class KatalogProdukResourceImpl extends KatalogProdukResourceDecorator {
 	}
 
 	protected boolean checkPreOwned(UUID id_produk) {
-		// TODO: implement this method
-		throw new UnsupportedOperationException();
+		if (id_produk == null) {
+			return false;
+		}
+		return true;
 	}
 	
 }

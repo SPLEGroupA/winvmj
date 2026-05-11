@@ -39,8 +39,10 @@ public class KatalogProdukImpl extends KatalogProdukDecorator {
 	}
 
 	protected boolean checkPreOwned(UUID id_produk) {
-		// TODO: implement this method
-		throw new UnsupportedOperationException();
+		if (id_produk == null) {
+			return false;
+		}
+		return this.kondisi != null && !this.kondisi.equalsIgnoreCase("baru");
 	}
 
 	public HashMap<String, Object> toHashMap() {

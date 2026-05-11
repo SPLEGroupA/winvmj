@@ -39,8 +39,10 @@ public class AkunPenggunaImpl extends AkunPenggunaDecorator {
 	}
 
 	protected String checkMembership(UUID id_akun) {
-		// TODO: implement this method
-		throw new UnsupportedOperationException();
+		if (id_akun == null) {
+			return "";
+		}
+		return this.membership_level != null ? this.membership_level : "";
 	}
 
 	public HashMap<String, Object> toHashMap() {

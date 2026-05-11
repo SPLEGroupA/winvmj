@@ -1,7 +1,7 @@
-namespace TokoOnlineAnime
+namespace TokoOnlineAnimePL
 
 features
-	TokoOnlineAnime
+	TokoOnlineAnimePL
 		optional
 			KatalogProduk
 				optional

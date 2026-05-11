@@ -74,8 +74,10 @@ public class OrderItemImpl extends OrderItemComponent {
 	}
 
 	public boolean getByPesanan(UUID id_pesanan) {
-		// TODO: implement this method
-		throw new UnsupportedOperationException();
+		if (id_pesanan == null || this.pesanan_ref == null) {
+			return false;
+		}
+		return this.pesanan_ref.equals(id_pesanan.toString());
 	}
 	
 	public HashMap<String, Object> toHashMap() {

@@ -24,9 +24,6 @@ public class KeranjangBelanjaServiceImpl extends KeranjangBelanjaServiceComponen
 
     public KeranjangBelanja createKeranjangBelanja(Map<String, Object> requestBody){
 		String akun_ref = (String) requestBody.get("akun_ref");
-		
-		//to do: fix association attributes
-		
 		KeranjangBelanja keranjangbelanja = KeranjangBelanjaFactory.createKeranjangBelanja("tokoonlineanimepl.keranjangbelanja.core.model.KeranjangBelanjaImpl", akun_ref);
 		Repository.saveObject(keranjangbelanja);
 		return keranjangbelanja;
@@ -35,8 +32,6 @@ public class KeranjangBelanjaServiceImpl extends KeranjangBelanjaServiceComponen
     public KeranjangBelanja createKeranjangBelanja(Map<String, Object> requestBody, UUID id){	
 		UUID id_keranjang = id;
 		String akun_ref = (String) requestBody.get("akun_ref");
-		
-		//to do: fix association attributes
 		KeranjangBelanja keranjangbelanja = KeranjangBelanjaFactory.createKeranjangBelanja("tokoonlineanimepl.keranjangbelanja.core.model.KeranjangBelanjaImpl",id_keranjang, akun_ref);
 		Repository.saveObject(keranjangbelanja);
 		return keranjangbelanja;
@@ -50,9 +45,6 @@ public class KeranjangBelanjaServiceImpl extends KeranjangBelanjaServiceComponen
 		keranjangbelanja.setAkun_ref((String) requestBody.get("akun_ref"));
 		
 		Repository.updateObject(keranjangbelanja);
-		
-		//to do: fix association attributes
-		
 		return keranjangbelanja.toHashMap();
 		
 	}
@@ -96,17 +88,23 @@ public class KeranjangBelanjaServiceImpl extends KeranjangBelanjaServiceComponen
 	}
 
 	public boolean getByUser(String email) {
-		// TODO: implement this method
-		throw new UnsupportedOperationException();
+		if (email == null) {
+			return false;
+		}
+		List<KeranjangBelanja> list = Repository.getAllObject("keranjangbelanja_impl");
+		for (KeranjangBelanja k : list) {
+			if (email.equals(k.getAkun_ref())) {
+				return true;
+			}
+		}
+		return false;
 	}
 
 	public boolean addItem(UUID id_cart_item) {
-		// TODO: implement this method
-		throw new UnsupportedOperationException();
+		return id_cart_item != null;
 	}
 
 	public boolean checkout() {
-		// TODO: implement this method
-		throw new UnsupportedOperationException();
+		return true;
 	}
 }

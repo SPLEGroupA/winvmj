@@ -39,8 +39,11 @@ public class KatalogProdukImpl extends KatalogProdukDecorator {
 	}
 
 	protected boolean addReview(UUID id_produk, int rating) {
-		// TODO: implement this method
-		throw new UnsupportedOperationException();
+		if (id_produk == null || rating < 0 || rating > 5) {
+			return false;
+		}
+		this.average_rating = rating;
+		return true;
 	}
 
 	public HashMap<String, Object> toHashMap() {

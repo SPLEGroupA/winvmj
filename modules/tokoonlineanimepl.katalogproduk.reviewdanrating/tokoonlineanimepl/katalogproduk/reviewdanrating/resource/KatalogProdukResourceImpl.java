@@ -93,8 +93,10 @@ public class KatalogProdukResourceImpl extends KatalogProdukResourceDecorator {
 	}
 
 	protected boolean addReview(UUID id_produk, int rating) {
-		// TODO: implement this method
-		throw new UnsupportedOperationException();
+		if (id_produk == null || rating < 0 || rating > 5) {
+			return false;
+		}
+		return true;
 	}
 	
 }

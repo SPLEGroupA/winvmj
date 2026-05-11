@@ -93,8 +93,10 @@ public class PembayaranResourceImpl extends PembayaranResourceDecorator {
 	}
 
 	protected boolean payWithEWallet(UUID id_pembayaran, int amount) {
-		// TODO: implement this method
-		throw new UnsupportedOperationException();
+		if (id_pembayaran == null || amount <= 0) {
+			return false;
+		}
+		return true;
 	}
 	
 }

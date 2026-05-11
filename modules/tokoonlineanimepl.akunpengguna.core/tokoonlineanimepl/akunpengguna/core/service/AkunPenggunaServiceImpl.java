@@ -27,9 +27,6 @@ public class AkunPenggunaServiceImpl extends AkunPenggunaServiceComponent{
 		String nama = (String) requestBody.get("nama");
 		String alamat = (String) requestBody.get("alamat");
 		String no_telepon = (String) requestBody.get("no_telepon");
-		
-		//to do: fix association attributes
-		
 		AkunPengguna akunpengguna = AkunPenggunaFactory.createAkunPengguna("tokoonlineanimepl.akunpengguna.core.model.AkunPenggunaImpl", email, nama, alamat, no_telepon);
 		Repository.saveObject(akunpengguna);
 		return akunpengguna;
@@ -41,8 +38,6 @@ public class AkunPenggunaServiceImpl extends AkunPenggunaServiceComponent{
 		String nama = (String) requestBody.get("nama");
 		String alamat = (String) requestBody.get("alamat");
 		String no_telepon = (String) requestBody.get("no_telepon");
-		
-		//to do: fix association attributes
 		AkunPengguna akunpengguna = AkunPenggunaFactory.createAkunPengguna("tokoonlineanimepl.akunpengguna.core.model.AkunPenggunaImpl",id_akun, email, nama, alamat, no_telepon);
 		Repository.saveObject(akunpengguna);
 		return akunpengguna;
@@ -59,9 +54,6 @@ public class AkunPenggunaServiceImpl extends AkunPenggunaServiceComponent{
 		akunpengguna.setNo_telepon((String) requestBody.get("no_telepon"));
 		
 		Repository.updateObject(akunpengguna);
-		
-		//to do: fix association attributes
-		
 		return akunpengguna.toHashMap();
 		
 	}

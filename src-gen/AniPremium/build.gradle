@@ -16,7 +16,7 @@ repositories {
 sourceSets {
     main {
         java {
-            srcDirs = ['tokoonlineanime.product.anipremium']
+            srcDirs = ['tokoonlineanimepl.product.anipremium']
         }
     }
 }
@@ -55,8 +55,8 @@ dependencies {
 
 }
 
-def jarsDirFile = file('tokoonlineanime.product.anipremium')
-def jarFile = file('tokoonlineanime.product.anipremium/AniPremium.jar')
+def jarsDirFile = file('tokoonlineanimepl.product.anipremium')
+def jarFile = file('tokoonlineanimepl.product.anipremium/AniPremium.jar')
 def jf = new java.util.jar.JarFile(jarFile)
 def mainCls = jf.manifest?.mainAttributes?.getValue('Main-Class')
 
@@ -73,7 +73,7 @@ file('hibernate.properties').withReader { reader ->
 }
 def dbUser = hibernateProperties.getProperty('hibernate.connection.username')
 def dbPass = hibernateProperties.getProperty('hibernate.connection.password')
-def dbName = "tokoonlineanime_product_anipremium"
+def dbName = "tokoonlineanimepl_product_anipremium"
 
 // === 1. CREATE DATABASE ===
 task createDB(type: Exec) {

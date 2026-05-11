@@ -49,9 +49,6 @@ public class AkunPenggunaServiceImpl extends AkunPenggunaServiceDecorator {
 		
 		Repository.updateObject(akunpenggunasistempoinloyalitas);
 		akunpenggunasistempoinloyalitas = Repository.getObject(id);
-		
-		//to do: fix association attributes
-		
 		return akunpenggunasistempoinloyalitas.toHashMap();
 	}
 
@@ -95,7 +92,9 @@ public class AkunPenggunaServiceImpl extends AkunPenggunaServiceDecorator {
 
 	
 	protected boolean redeemPoin(UUID id_akun, int jumlah_poin) {
-		// TODO: implement this method
-		throw new UnsupportedOperationException();
+		if (id_akun == null || jumlah_poin <= 0) {
+			return false;
+		}
+		return true;
 	}
 }

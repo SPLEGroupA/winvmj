@@ -74,13 +74,19 @@ public class CartItemImpl extends CartItemComponent {
 	}
 
 	public boolean setProduct(UUID id_produk, int quantity) {
-		// TODO: implement this method
-		throw new UnsupportedOperationException();
+		if (id_produk == null || quantity <= 0) {
+			return false;
+		}
+		this.produk_ref = id_produk.toString();
+		this.quantity = quantity;
+		return true;
 	}
 
 	public boolean getByKeranjang(UUID id_keranjang) {
-		// TODO: implement this method
-		throw new UnsupportedOperationException();
+		if (id_keranjang == null || this.keranjang_ref == null) {
+			return false;
+		}
+		return this.keranjang_ref.equals(id_keranjang.toString());
 	}
 	
 	public HashMap<String, Object> toHashMap() {

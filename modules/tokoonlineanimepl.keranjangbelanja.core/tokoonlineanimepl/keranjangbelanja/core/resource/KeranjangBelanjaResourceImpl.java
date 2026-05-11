@@ -82,19 +82,16 @@ public class KeranjangBelanjaResourceImpl extends KeranjangBelanjaResourceCompon
 
 	
 	public boolean getByUser(String email) {
-		// TODO: implement this method
-		throw new UnsupportedOperationException();
+		return keranjangbelanjaServiceImpl.getByUser(email);
 	}
 
 	
 	public boolean addItem(UUID id_cart_item) {
-		// TODO: implement this method
-		throw new UnsupportedOperationException();
+		return keranjangbelanjaServiceImpl.addItem(id_cart_item);
 	}
 
 	
 	public boolean checkout() {
-		// TODO: implement this method
-		throw new UnsupportedOperationException();
+		return keranjangbelanjaServiceImpl.checkout();
 	}
 }

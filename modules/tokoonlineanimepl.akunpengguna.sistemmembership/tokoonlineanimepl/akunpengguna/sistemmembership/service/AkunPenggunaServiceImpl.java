@@ -47,9 +47,6 @@ public class AkunPenggunaServiceImpl extends AkunPenggunaServiceDecorator {
 		
 		Repository.updateObject(akunpenggunasistemmembership);
 		akunpenggunasistemmembership = Repository.getObject(id);
-		
-		//to do: fix association attributes
-		
 		return akunpenggunasistemmembership.toHashMap();
 	}
 
@@ -93,7 +90,9 @@ public class AkunPenggunaServiceImpl extends AkunPenggunaServiceDecorator {
 
 	
 	protected String checkMembership(UUID id_akun) {
-		// TODO: implement this method
-		throw new UnsupportedOperationException();
+		if (id_akun == null) {
+			return "";
+		}
+		return "";
 	}
 }

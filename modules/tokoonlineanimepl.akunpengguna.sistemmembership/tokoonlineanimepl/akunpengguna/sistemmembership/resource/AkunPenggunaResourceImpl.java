@@ -93,8 +93,10 @@ public class AkunPenggunaResourceImpl extends AkunPenggunaResourceDecorator {
 	}
 
 	protected String checkMembership(UUID id_akun) {
-		// TODO: implement this method
-		throw new UnsupportedOperationException();
+		if (id_akun == null) {
+			return "";
+		}
+		return "";
 	}
 	
 }

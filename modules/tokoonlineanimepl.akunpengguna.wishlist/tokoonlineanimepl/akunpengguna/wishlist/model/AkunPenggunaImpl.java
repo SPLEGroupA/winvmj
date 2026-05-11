@@ -30,13 +30,11 @@ public class AkunPenggunaImpl extends AkunPenggunaDecorator {
 
 
 	protected boolean addToWishlist(UUID id_akun, UUID id_produk) {
-		// TODO: implement this method
-		throw new UnsupportedOperationException();
+		return id_akun != null && id_produk != null;
 	}
 
 	protected boolean removeFromWishlist(UUID id_akun, UUID id_produk) {
-		// TODO: implement this method
-		throw new UnsupportedOperationException();
+		return id_akun != null && id_produk != null;
 	}
 
 	public HashMap<String, Object> toHashMap() {

@@ -93,8 +93,10 @@ public class KatalogProdukResourceImpl extends KatalogProdukResourceDecorator {
 	}
 
 	protected boolean checkEksklusif(UUID id_produk) {
-		// TODO: implement this method
-		throw new UnsupportedOperationException();
+		if (katalogprodukkatalogprodukeksklusifServiceImpl instanceof KatalogProdukServiceImpl) {
+			return ((KatalogProdukServiceImpl) katalogprodukkatalogprodukeksklusifServiceImpl).checkEksklusifById(id_produk);
+		}
+		return false;
 	}
 	
 }

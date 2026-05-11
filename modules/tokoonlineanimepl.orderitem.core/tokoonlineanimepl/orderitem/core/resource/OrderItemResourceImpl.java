@@ -82,7 +82,6 @@ public class OrderItemResourceImpl extends OrderItemResourceComponent{
 
 	
 	public boolean getByPesanan(UUID id_pesanan) {
-		// TODO: implement this method
-		throw new UnsupportedOperationException();
+		return orderitemServiceImpl.getByPesanan(id_pesanan);
 	}
 }

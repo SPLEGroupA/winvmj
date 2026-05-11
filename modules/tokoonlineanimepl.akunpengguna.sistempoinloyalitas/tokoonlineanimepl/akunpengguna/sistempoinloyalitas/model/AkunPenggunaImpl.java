@@ -39,8 +39,14 @@ public class AkunPenggunaImpl extends AkunPenggunaDecorator {
 	}
 
 	protected boolean redeemPoin(UUID id_akun, int jumlah_poin) {
-		// TODO: implement this method
-		throw new UnsupportedOperationException();
+		if (id_akun == null || jumlah_poin <= 0) {
+			return false;
+		}
+		if (this.poin < jumlah_poin) {
+			return false;
+		}
+		this.poin -= jumlah_poin;
+		return true;
 	}
 
 	public HashMap<String, Object> toHashMap() {

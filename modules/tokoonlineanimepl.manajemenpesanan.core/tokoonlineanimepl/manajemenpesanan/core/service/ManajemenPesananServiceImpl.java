@@ -28,9 +28,6 @@ public class ManajemenPesananServiceImpl extends ManajemenPesananServiceComponen
 		String total_hargaStr = (String) requestBody.get("total_harga");
 		int total_harga = Integer.parseInt(total_hargaStr);
 		String akun_ref = (String) requestBody.get("akun_ref");
-		
-		//to do: fix association attributes
-		
 		ManajemenPesanan manajemenpesanan = ManajemenPesananFactory.createManajemenPesanan("tokoonlineanimepl.manajemenpesanan.core.model.ManajemenPesananImpl", status, tanggal_pesan, total_harga, akun_ref);
 		Repository.saveObject(manajemenpesanan);
 		return manajemenpesanan;
@@ -43,8 +40,6 @@ public class ManajemenPesananServiceImpl extends ManajemenPesananServiceComponen
 		String total_hargaStr = (String) requestBody.get("total_harga");
 		int total_harga = Integer.parseInt(total_hargaStr);
 		String akun_ref = (String) requestBody.get("akun_ref");
-		
-		//to do: fix association attributes
 		ManajemenPesanan manajemenpesanan = ManajemenPesananFactory.createManajemenPesanan("tokoonlineanimepl.manajemenpesanan.core.model.ManajemenPesananImpl",id_pesanan, status, tanggal_pesan, total_harga, akun_ref);
 		Repository.saveObject(manajemenpesanan);
 		return manajemenpesanan;
@@ -63,9 +58,6 @@ public class ManajemenPesananServiceImpl extends ManajemenPesananServiceComponen
 		manajemenpesanan.setAkun_ref((String) requestBody.get("akun_ref"));
 		
 		Repository.updateObject(manajemenpesanan);
-		
-		//to do: fix association attributes
-		
 		return manajemenpesanan.toHashMap();
 		
 	}
@@ -109,7 +101,15 @@ public class ManajemenPesananServiceImpl extends ManajemenPesananServiceComponen
 	}
 
 	public boolean getByUser(String email) {
-		// TODO: implement this method
-		throw new UnsupportedOperationException();
+		if (email == null) {
+			return false;
+		}
+		List<ManajemenPesanan> list = Repository.getAllObject("manajemenpesanan_impl");
+		for (ManajemenPesanan p : list) {
+			if (email.equals(p.getAkun_ref())) {
+				return true;
+			}
+		}
+		return false;
 	}
 }

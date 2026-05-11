@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <configuration>
-	<feature automatic="selected" name="TokoOnlineAnime"/>
+	<feature automatic="selected" name="TokoOnlineAnimePL"/>
 	<feature automatic="selected" manual="selected" name="KatalogProduk"/>
 	<feature manual="selected" name="KatalogProdukEksklusif"/>
 	<feature manual="selected" name="KatalogProdukPreOwned"/>
