@@ -1,0 +1,17 @@
+{
+    "KatalogProduk": ["tokoonlineanimepl.katalogproduk.core"],
+    "KatalogProdukEksklusif": ["tokoonlineanimepl.katalogproduk.katalogprodukeksklusif"],
+    "KatalogProdukPreOwned": ["tokoonlineanimepl.katalogproduk.katalogprodukpreowned"],
+    "ReviewDanRating": ["tokoonlineanimepl.katalogproduk.reviewdanrating"],
+    "KeranjangBelanja": ["tokoonlineanimepl.keranjangbelanja.core"],
+    "CartItem": ["tokoonlineanimepl.cartitem.core"],
+    "AkunPengguna": ["tokoonlineanimepl.akunpengguna.core"],
+    "Wishlist": ["tokoonlineanimepl.akunpengguna.wishlist"],
+    "SistemMembership": ["tokoonlineanimepl.akunpengguna.sistemmembership"],
+    "SistemPoinLoyalitas": ["tokoonlineanimepl.akunpengguna.sistempoinloyalitas"],
+    "Pembayaran": ["tokoonlineanimepl.pembayaran.core"],
+    "PembayaranEWallet": ["tokoonlineanimepl.pembayaran.pembayaranewallet"],
+    "ManajemenPesanan": ["tokoonlineanimepl.manajemenpesanan.core"],
+    "OrderItem": ["tokoonlineanimepl.orderitem.core"],
+    "PreOrder": ["tokoonlineanimepl.preorder.core"]
+}

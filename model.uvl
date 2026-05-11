@@ -1,0 +1,23 @@
+namespace TokoOnlineAnime
+
+features
+	TokoOnlineAnime
+		optional
+			KatalogProduk
+				optional
+					KatalogProdukEksklusif
+					KatalogProdukPreOwned
+					ReviewDanRating
+			KeranjangBelanja
+			CartItem
+			AkunPengguna
+				optional
+					Wishlist
+					SistemMembership
+					SistemPoinLoyalitas
+			Pembayaran
+				optional
+					PembayaranEWallet
+			ManajemenPesanan
+			OrderItem
+			PreOrder
