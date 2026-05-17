@@ -38,7 +38,7 @@ public class KatalogProdukServiceImpl extends KatalogProdukServiceDecorator {
 		String kondisi = (String) requestBody.get("kondisi");
 		UUID recordKatalogProdukId_produk = ((KatalogProdukDecorator) savedKatalogProduk).getId_produk();
 		KatalogProduk katalogproduk = record.createKatalogProduk(requestBody, recordKatalogProdukId_produk);
-		KatalogProduk katalogprodukkatalogprodukpreowned = KatalogProdukFactory.createKatalogProduk("tokoonlineanimepl.katalogproduk.katalogprodukpreowned.KatalogProdukImpl", katalogproduk, kondisi);
+		KatalogProduk katalogprodukkatalogprodukpreowned = KatalogProdukFactory.createKatalogProduk("tokoonlineanimepl.katalogproduk.katalogprodukpreowned.model.KatalogProdukImpl", katalogproduk, kondisi);
 		return katalogprodukkatalogprodukpreowned;
 	}
 

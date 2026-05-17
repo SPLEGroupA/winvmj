@@ -40,7 +40,7 @@ public class KatalogProdukServiceImpl extends KatalogProdukServiceDecorator {
 		int average_rating = Integer.parseInt(average_ratingStr);
 		UUID recordKatalogProdukId_produk = ((KatalogProdukDecorator) savedKatalogProduk).getId_produk();
 		KatalogProduk katalogproduk = record.createKatalogProduk(requestBody, recordKatalogProdukId_produk);
-		KatalogProduk katalogprodukreviewdanrating = KatalogProdukFactory.createKatalogProduk("tokoonlineanimepl.katalogproduk.reviewdanrating.KatalogProdukImpl", katalogproduk, average_rating);
+		KatalogProduk katalogprodukreviewdanrating = KatalogProdukFactory.createKatalogProduk("tokoonlineanimepl.katalogproduk.reviewdanrating.model.KatalogProdukImpl", katalogproduk, average_rating);
 		return katalogprodukreviewdanrating;
 	}
 
