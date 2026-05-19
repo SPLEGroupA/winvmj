@@ -18,7 +18,7 @@ public class KatalogProdukServiceImpl extends KatalogProdukServiceDecorator {
     }
 
  	public KatalogProduk createKatalogProduk(Map<String, Object> requestBody){
-		boolean is_eksklusif = parseBoolean(requestBody.get("is_eksklusif"));
+		String label_eksklusif = parseString(requestBody.get("label_eksklusif"));
 		String nama = (String) requestBody.get("nama");
 		String hargaStr = (String) requestBody.get("harga");
 		int harga = Integer.parseInt(hargaStr);
@@ -28,17 +28,17 @@ public class KatalogProdukServiceImpl extends KatalogProdukServiceDecorator {
 		int stok = Integer.parseInt(stokStr);
 		String gambar_url = (String) requestBody.get("gambar_url");
 		KatalogProduk katalogprodukkatalogprodukeksklusif = record.createKatalogProduk(requestBody);
-		KatalogProduk katalogprodukkatalogprodukeksklusifdeco = KatalogProdukFactory.createKatalogProduk("tokoonlineanimepl.katalogproduk.katalogprodukeksklusif.model.KatalogProdukImpl", katalogprodukkatalogprodukeksklusif, is_eksklusif);
+		KatalogProduk katalogprodukkatalogprodukeksklusifdeco = KatalogProdukFactory.createKatalogProduk("tokoonlineanimepl.katalogproduk.katalogprodukeksklusif.model.KatalogProdukImpl", katalogprodukkatalogprodukeksklusif, label_eksklusif);
 		Repository.saveObject(katalogprodukkatalogprodukeksklusifdeco);
 		return katalogprodukkatalogprodukeksklusifdeco;
 	}
 
     public KatalogProduk createKatalogProduk(Map<String, Object> requestBody, UUID id){	
 		KatalogProduk savedKatalogProduk = Repository.getObject(id);
-		boolean is_eksklusif = parseBoolean(requestBody.get("is_eksklusif"));
+		String label_eksklusif = parseString(requestBody.get("label_eksklusif"));
 		UUID recordKatalogProdukId_produk = ((KatalogProdukDecorator) savedKatalogProduk).getId_produk();
 		KatalogProduk katalogproduk = record.createKatalogProduk(requestBody, recordKatalogProdukId_produk);
-		KatalogProduk katalogprodukkatalogprodukeksklusif = KatalogProdukFactory.createKatalogProduk("tokoonlineanimepl.katalogproduk.katalogprodukeksklusif.model.KatalogProdukImpl", katalogproduk, is_eksklusif);
+		KatalogProduk katalogprodukkatalogprodukeksklusif = KatalogProdukFactory.createKatalogProduk("tokoonlineanimepl.katalogproduk.katalogprodukeksklusif.model.KatalogProdukImpl", katalogproduk, label_eksklusif);
 		return katalogprodukkatalogprodukeksklusif;
 	}
 
@@ -99,7 +99,8 @@ public class KatalogProdukServiceImpl extends KatalogProdukServiceDecorator {
 		}
 		KatalogProduk produk = Repository.getObject(id_produk);
 		if (produk instanceof tokoonlineanimepl.katalogproduk.katalogprodukeksklusif.model.KatalogProdukImpl) {
-			return ((tokoonlineanimepl.katalogproduk.katalogprodukeksklusif.model.KatalogProdukImpl) produk).getIs_eksklusif();
+			String label_eksklusif = ((tokoonlineanimepl.katalogproduk.katalogprodukeksklusif.model.KatalogProdukImpl) produk).getLabel_eksklusif();
+			return label_eksklusif != null && !label_eksklusif.trim().isEmpty();
 		}
 		return false;
 	}
@@ -108,13 +109,10 @@ public class KatalogProdukServiceImpl extends KatalogProdukServiceDecorator {
 		return checkEksklusif(id_produk);
 	}
 
-	private boolean parseBoolean(Object value) {
-		if (value instanceof Boolean) {
-			return (Boolean) value;
+	private String parseString(Object value) {
+		if (value == null) {
+			return "";
 		}
-		if (value instanceof String) {
-			return Boolean.parseBoolean((String) value);
-		}
-		return false;
+		return value.toString();
 	}
 }

@@ -4,7 +4,7 @@
 	<feature automatic="selected" manual="selected" name="KatalogProduk"/>
 	<feature manual="selected" name="KatalogProdukEksklusif"/>
 	<feature manual="selected" name="KatalogProdukPreOwned"/>
-	<feature manual="selected" name="ReviewDanRating"/>
+	<feature name="ReviewDanRating"/>
 	<feature name="KeranjangBelanja"/>
 	<feature name="CartItem"/>
 	<feature name="AkunPengguna"/>

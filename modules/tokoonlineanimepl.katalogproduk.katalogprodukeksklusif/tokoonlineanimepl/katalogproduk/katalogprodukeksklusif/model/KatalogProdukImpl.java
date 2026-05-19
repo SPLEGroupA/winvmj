@@ -17,38 +17,38 @@ import tokoonlineanimepl.katalogproduk.core.model.KatalogProdukComponent;
 @Table(name="katalogproduk_katalogprodukeksklusif")
 public class KatalogProdukImpl extends KatalogProdukDecorator {
 
-	protected boolean is_eksklusif;
+	protected String label_eksklusif;
 	public KatalogProdukImpl() {
         super();
 		this.id_produk = UUID.randomUUID();
         this.objectName = KatalogProdukImpl.class.getName();
     }
 
-	public KatalogProdukImpl(KatalogProdukComponent record, boolean is_eksklusif) {
+	public KatalogProdukImpl(KatalogProdukComponent record, String label_eksklusif) {
 		super(record, KatalogProdukImpl.class.getName());
-		this.is_eksklusif = is_eksklusif;
+		this.label_eksklusif = label_eksklusif;
 		this.objectName = KatalogProdukImpl.class.getName();
 	}
 
-	public boolean getIs_eksklusif() {
-		return this.is_eksklusif;
+	public String getLabel_eksklusif() {
+		return this.label_eksklusif;
 	}
 
-	public void setIs_eksklusif(boolean is_eksklusif) {
-		this.is_eksklusif = is_eksklusif;
+	public void setLabel_eksklusif(String label_eksklusif) {
+		this.label_eksklusif = label_eksklusif;
 	}
 
 	protected boolean checkEksklusif(UUID id_produk) {
 		if (id_produk == null) {
 			return false;
 		}
-		return this.is_eksklusif;
+		return this.label_eksklusif != null && !this.label_eksklusif.trim().isEmpty();
 	}
 
 	public HashMap<String, Object> toHashMap() {
         HashMap<String, Object> map = record.toHashMap();
         map.put("id_produk", id_produk);
-		map.put("is_eksklusif", getIs_eksklusif());
+		map.put("label_eksklusif", getLabel_eksklusif());
 
         return map;
     }
