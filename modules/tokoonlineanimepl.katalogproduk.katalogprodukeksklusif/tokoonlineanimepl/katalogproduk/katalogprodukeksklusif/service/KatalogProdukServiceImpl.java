@@ -93,20 +93,23 @@ public class KatalogProdukServiceImpl extends KatalogProdukServiceDecorator {
 	}
 
 	
-	protected boolean checkEksklusif(UUID id_produk) {
+	protected String getKeteranganEksklusif(UUID id_produk) {
 		if (id_produk == null) {
-			return false;
+			return "";
 		}
 		KatalogProduk produk = Repository.getObject(id_produk);
 		if (produk instanceof tokoonlineanimepl.katalogproduk.katalogprodukeksklusif.model.KatalogProdukImpl) {
 			String label_eksklusif = ((tokoonlineanimepl.katalogproduk.katalogprodukeksklusif.model.KatalogProdukImpl) produk).getLabel_eksklusif();
-			return label_eksklusif != null && !label_eksklusif.trim().isEmpty();
+			if (label_eksklusif == null || label_eksklusif.trim().isEmpty()) {
+				return "Produk Eksklusif";
+			}
+			return label_eksklusif;
 		}
-		return false;
+		return "";
 	}
 
-	public boolean checkEksklusifById(UUID id_produk) {
-		return checkEksklusif(id_produk);
+	public String getKeteranganEksklusifById(UUID id_produk) {
+		return getKeteranganEksklusif(id_produk);
 	}
 
 	private String parseString(Object value) {

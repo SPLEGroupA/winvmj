@@ -92,11 +92,11 @@ public class KatalogProdukResourceImpl extends KatalogProdukResourceDecorator {
 		return katalogprodukkatalogprodukeksklusifServiceImpl.deleteKatalogProduk(requestBody);
 	}
 
-	protected boolean checkEksklusif(UUID id_produk) {
+	protected String getKeteranganEksklusif(UUID id_produk) {
 		if (katalogprodukkatalogprodukeksklusifServiceImpl instanceof KatalogProdukServiceImpl) {
-			return ((KatalogProdukServiceImpl) katalogprodukkatalogprodukeksklusifServiceImpl).checkEksklusifById(id_produk);
+			return ((KatalogProdukServiceImpl) katalogprodukkatalogprodukeksklusifServiceImpl).getKeteranganEksklusifById(id_produk);
 		}
-		return false;
+		return "";
 	}
 	
 }

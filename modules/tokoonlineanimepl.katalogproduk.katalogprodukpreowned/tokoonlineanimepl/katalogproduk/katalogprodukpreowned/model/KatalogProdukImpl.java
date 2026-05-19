@@ -38,13 +38,6 @@ public class KatalogProdukImpl extends KatalogProdukDecorator {
 		this.kondisi = kondisi;
 	}
 
-	protected boolean checkPreOwned(UUID id_produk) {
-		if (id_produk == null) {
-			return false;
-		}
-		return this.kondisi != null && !this.kondisi.equalsIgnoreCase("baru");
-	}
-
 	public HashMap<String, Object> toHashMap() {
         HashMap<String, Object> map = record.toHashMap();
         map.put("id_produk", id_produk);
