@@ -23,22 +23,24 @@ import id.ac.ui.cs.prices.winvmj.auth.annotations.Restricted;
 public class PreOrderServiceImpl extends PreOrderServiceComponent{
 
     public PreOrder createPreOrder(Map<String, Object> requestBody){
-		String tanggal_rilis = (String) requestBody.get("tanggal_rilis");
-		String status = (String) requestBody.get("status");
+		String tanggal_preorder = (String) requestBody.get("tanggal_preorder");
+		String status_preorder = (String) requestBody.get("status_preorder");
 		String produk_ref = (String) requestBody.get("produk_ref");
-		String akun_ref = (String) requestBody.get("akun_ref");
-		PreOrder preorder = PreOrderFactory.createPreOrder("tokoonlineanimepl.preorder.core.model.PreOrderImpl", tanggal_rilis, status, produk_ref, akun_ref);
+		String customer_email = (String) requestBody.get("customer_email");
+		String nama_pelanggan = (String) requestBody.get("nama_pelanggan");
+		PreOrder preorder = PreOrderFactory.createPreOrder("tokoonlineanimepl.preorder.core.model.PreOrderImpl", tanggal_preorder, status_preorder, produk_ref, customer_email, nama_pelanggan);
 		Repository.saveObject(preorder);
 		return preorder;
 	}
 
     public PreOrder createPreOrder(Map<String, Object> requestBody, UUID id){	
 		UUID id_preorder = id;
-		String tanggal_rilis = (String) requestBody.get("tanggal_rilis");
-		String status = (String) requestBody.get("status");
+		String tanggal_preorder = (String) requestBody.get("tanggal_preorder");
+		String status_preorder = (String) requestBody.get("status_preorder");
 		String produk_ref = (String) requestBody.get("produk_ref");
-		String akun_ref = (String) requestBody.get("akun_ref");
-		PreOrder preorder = PreOrderFactory.createPreOrder("tokoonlineanimepl.preorder.core.model.PreOrderImpl",id_preorder, tanggal_rilis, status, produk_ref, akun_ref);
+		String customer_email = (String) requestBody.get("customer_email");
+		String nama_pelanggan = (String) requestBody.get("nama_pelanggan");
+		PreOrder preorder = PreOrderFactory.createPreOrder("tokoonlineanimepl.preorder.core.model.PreOrderImpl",id_preorder, tanggal_preorder, status_preorder, produk_ref, customer_email, nama_pelanggan);
 		Repository.saveObject(preorder);
 		return preorder;
 	}
@@ -48,10 +50,11 @@ public class PreOrderServiceImpl extends PreOrderServiceComponent{
 		UUID id = UUID.fromString(idStr);		
 		PreOrder preorder = Repository.getObject(id);
 		
-		preorder.setTanggal_rilis((String) requestBody.get("tanggal_rilis"));
-		preorder.setStatus((String) requestBody.get("status"));
+		preorder.setTanggal_preorder((String) requestBody.get("tanggal_preorder"));
+		preorder.setStatus_preorder((String) requestBody.get("status_preorder"));
 		preorder.setProduk_ref((String) requestBody.get("produk_ref"));
-		preorder.setAkun_ref((String) requestBody.get("akun_ref"));
+		preorder.setCustomer_email((String) requestBody.get("customer_email"));
+		preorder.setNama_pelanggan((String) requestBody.get("nama_pelanggan"));
 		
 		Repository.updateObject(preorder);
 		return preorder.toHashMap();
@@ -67,7 +70,7 @@ public class PreOrderServiceImpl extends PreOrderServiceComponent{
 	public HashMap<String, Object> getPreOrderById(UUID id){
 		List<HashMap<String, Object>> preorderList = getAllPreOrder();
 		for (HashMap<String, Object> preorder : preorderList){
-			UUID record_id = UUID.fromString((String) preorder.get("id_preorder"));
+			UUID record_id = (UUID) preorder.get("id_preorder");
 			if (record_id.equals(id)){
 				return preorder;
 			}

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+	<feature automatic="selected" name="TokoOnlineAnimePL"/>
+	<feature automatic="selected" manual="selected" name="KatalogProduk"/>
+	<feature manual="selected" name="KatalogProdukEksklusif"/>
+	<feature manual="selected" name="KatalogProdukPreOwned"/>
+	<feature name="ReviewDanRating"/>
+	<feature name="KeranjangBelanja"/>
+	<feature name="CartItem"/>
+	<feature name="AkunPengguna"/>
+	<feature name="Wishlist"/>
+	<feature name="SistemMembership"/>
+	<feature name="SistemPoinLoyalitas"/>
+	<feature name="Pembayaran"/>
+	<feature name="PembayaranEWallet"/>
+	<feature name="ManajemenPesanan"/>
+	<feature name="OrderItem"/>
+	<feature manual="selected" name="PreOrder"/>
+</configuration>

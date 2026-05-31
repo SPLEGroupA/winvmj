@@ -38,17 +38,17 @@ public abstract class PreOrderDecorator extends PreOrderComponent{
 	public void setId_preorder(UUID id_preorder) {
 		record.setId_preorder(id_preorder);
 	}
-	public String getTanggal_rilis() {
-		return record.getTanggal_rilis();
+	public String getTanggal_preorder() {
+		return record.getTanggal_preorder();
 	}
-	public void setTanggal_rilis(String tanggal_rilis) {
-		record.setTanggal_rilis(tanggal_rilis);
+	public void setTanggal_preorder(String tanggal_preorder) {
+		record.setTanggal_preorder(tanggal_preorder);
 	}
-	public String getStatus() {
-		return record.getStatus();
+	public String getStatus_preorder() {
+		return record.getStatus_preorder();
 	}
-	public void setStatus(String status) {
-		record.setStatus(status);
+	public void setStatus_preorder(String status_preorder) {
+		record.setStatus_preorder(status_preorder);
 	}
 	public String getProduk_ref() {
 		return record.getProduk_ref();
@@ -56,11 +56,17 @@ public abstract class PreOrderDecorator extends PreOrderComponent{
 	public void setProduk_ref(String produk_ref) {
 		record.setProduk_ref(produk_ref);
 	}
-	public String getAkun_ref() {
-		return record.getAkun_ref();
+	public String getCustomer_email() {
+		return record.getCustomer_email();
 	}
-	public void setAkun_ref(String akun_ref) {
-		record.setAkun_ref(akun_ref);
+	public void setCustomer_email(String customer_email) {
+		record.setCustomer_email(customer_email);
+	}
+	public String getNama_pelanggan() {
+		return record.getNama_pelanggan();
+	}
+	public void setNama_pelanggan(String nama_pelanggan) {
+		record.setNama_pelanggan(nama_pelanggan);
 	}
 
 
