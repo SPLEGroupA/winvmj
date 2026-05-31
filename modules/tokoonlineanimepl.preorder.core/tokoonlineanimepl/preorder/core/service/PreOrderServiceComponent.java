@@ -19,6 +19,7 @@ public abstract class PreOrderServiceComponent implements PreOrderService{
 	public abstract HashMap<String, Object> updatePreOrder(Map<String, Object> requestBody);
     public abstract HashMap<String, Object> getPreOrder(String idStr);
     public abstract List<HashMap<String,Object>> getAllPreOrder();
+    public abstract List<HashMap<String,Object>> getPreOrderByCustomerEmail(String customerEmail);
     public abstract List<HashMap<String,Object>> transformListToHashMap(List<PreOrder> List);
     public abstract List<HashMap<String,Object>> deletePreOrder(Map<String, Object> requestBody);
 	public abstract HashMap<String, Object> getPreOrderById(UUID id);	

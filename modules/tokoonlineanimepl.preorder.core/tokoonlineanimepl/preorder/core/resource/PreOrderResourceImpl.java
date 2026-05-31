@@ -2,7 +2,9 @@ package tokoonlineanimepl.preorder.core.resource;
 import java.util.*;
 
 import id.ac.ui.cs.prices.winvmj.core.Route;
+import id.ac.ui.cs.prices.winvmj.core.AuthHandler;
 import id.ac.ui.cs.prices.winvmj.core.VMJExchange;
+import id.ac.ui.cs.prices.winvmj.auth.core.AuthPayload;
 import id.ac.ui.cs.prices.winvmj.core.exceptions.*;
 import tokoonlineanimepl.preorder.PreOrderFactory;
 import id.ac.ui.cs.prices.winvmj.auth.annotations.Restricted;
@@ -64,8 +66,24 @@ public class PreOrderResourceImpl extends PreOrderResourceComponent{
 	
     @Route(url="call/preorder/list")
     public List<HashMap<String,Object>> getAllPreOrder(VMJExchange vmjExchange){
-		Map<String, Object> requestBody = vmjExchange.getPayload(); 
-		return preorderServiceImpl.getAllPreOrder();
+		try {
+			boolean isAuthorized = AuthHandler.authorize(vmjExchange, "");
+			if (!isAuthorized) {
+				throw new ForbiddenException("Token tidak valid");
+			}
+			AuthPayload authPayload = vmjExchange.getAuthPayload();
+			if (authPayload == null || authPayload.getEmail() == null) {
+				throw new ForbiddenException("Email user login tidak ditemukan");
+			}
+			if (AuthHandler.isAdministrator(vmjExchange)) {
+				return preorderServiceImpl.getAllPreOrder();
+			}
+			return preorderServiceImpl.getPreOrderByCustomerEmail(authPayload.getEmail());
+		} catch (ForbiddenException e) {
+			throw e;
+		} catch (Exception e) {
+			throw new InternalServerException(e.getMessage());
+		}
 	}
 
 	

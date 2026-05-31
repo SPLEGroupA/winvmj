@@ -20,6 +20,7 @@ public abstract class PreOrderComponent implements PreOrder{
 	protected String tanggal_preorder;
 	protected String status_preorder;
 	protected String produk_ref;
+	protected int quantity;
 	protected String customer_email;
 	protected String nama_pelanggan;
 	protected String objectName = PreOrderComponent.class.getName();
@@ -29,12 +30,13 @@ public abstract class PreOrderComponent implements PreOrder{
 	} 
 
 	public PreOrderComponent(
-        UUID id_preorder, String tanggal_preorder, String status_preorder, String produk_ref, String customer_email, String nama_pelanggan
+        UUID id_preorder, String tanggal_preorder, String status_preorder, String produk_ref, int quantity, String customer_email, String nama_pelanggan
     ) {
         this.id_preorder = id_preorder;
         this.tanggal_preorder = tanggal_preorder;
         this.status_preorder = status_preorder;
         this.produk_ref = produk_ref;
+        this.quantity = quantity;
         this.customer_email = customer_email;
         this.nama_pelanggan = nama_pelanggan;
     }
@@ -67,6 +69,13 @@ public abstract class PreOrderComponent implements PreOrder{
 	public void setProduk_ref(String produk_ref) {
 		this.produk_ref = produk_ref;
 	}
+	public int getQuantity() {
+		return this.quantity;
+	}
+
+	public void setQuantity(int quantity) {
+		this.quantity = quantity;
+	}
 	public String getCustomer_email() {
 		return this.customer_email;
 	}
@@ -90,6 +99,7 @@ public abstract class PreOrderComponent implements PreOrder{
             " tanggal_preorder='" + getTanggal_preorder() + "'" +
             " status_preorder='" + getStatus_preorder() + "'" +
             " produk_ref='" + getProduk_ref() + "'" +
+            " quantity='" + getQuantity() + "'" +
             " customer_email='" + getCustomer_email() + "'" +
             " nama_pelanggan='" + getNama_pelanggan() + "'" +
             "}";

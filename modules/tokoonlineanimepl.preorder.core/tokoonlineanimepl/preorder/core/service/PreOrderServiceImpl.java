@@ -26,9 +26,10 @@ public class PreOrderServiceImpl extends PreOrderServiceComponent{
 		String tanggal_preorder = (String) requestBody.get("tanggal_preorder");
 		String status_preorder = (String) requestBody.get("status_preorder");
 		String produk_ref = (String) requestBody.get("produk_ref");
+		int quantity = parseInteger(requestBody.get("quantity"));
 		String customer_email = (String) requestBody.get("customer_email");
 		String nama_pelanggan = (String) requestBody.get("nama_pelanggan");
-		PreOrder preorder = PreOrderFactory.createPreOrder("tokoonlineanimepl.preorder.core.model.PreOrderImpl", tanggal_preorder, status_preorder, produk_ref, customer_email, nama_pelanggan);
+		PreOrder preorder = PreOrderFactory.createPreOrder("tokoonlineanimepl.preorder.core.model.PreOrderImpl", tanggal_preorder, status_preorder, produk_ref, quantity, customer_email, nama_pelanggan);
 		Repository.saveObject(preorder);
 		return preorder;
 	}
@@ -38,9 +39,10 @@ public class PreOrderServiceImpl extends PreOrderServiceComponent{
 		String tanggal_preorder = (String) requestBody.get("tanggal_preorder");
 		String status_preorder = (String) requestBody.get("status_preorder");
 		String produk_ref = (String) requestBody.get("produk_ref");
+		int quantity = parseInteger(requestBody.get("quantity"));
 		String customer_email = (String) requestBody.get("customer_email");
 		String nama_pelanggan = (String) requestBody.get("nama_pelanggan");
-		PreOrder preorder = PreOrderFactory.createPreOrder("tokoonlineanimepl.preorder.core.model.PreOrderImpl",id_preorder, tanggal_preorder, status_preorder, produk_ref, customer_email, nama_pelanggan);
+		PreOrder preorder = PreOrderFactory.createPreOrder("tokoonlineanimepl.preorder.core.model.PreOrderImpl",id_preorder, tanggal_preorder, status_preorder, produk_ref, quantity, customer_email, nama_pelanggan);
 		Repository.saveObject(preorder);
 		return preorder;
 	}
@@ -53,6 +55,7 @@ public class PreOrderServiceImpl extends PreOrderServiceComponent{
 		preorder.setTanggal_preorder((String) requestBody.get("tanggal_preorder"));
 		preorder.setStatus_preorder((String) requestBody.get("status_preorder"));
 		preorder.setProduk_ref((String) requestBody.get("produk_ref"));
+		preorder.setQuantity(parseInteger(requestBody.get("quantity")));
 		preorder.setCustomer_email((String) requestBody.get("customer_email"));
 		preorder.setNama_pelanggan((String) requestBody.get("nama_pelanggan"));
 		
@@ -83,6 +86,23 @@ public class PreOrderServiceImpl extends PreOrderServiceComponent{
 		return transformListToHashMap(List);
 	}
 
+    public List<HashMap<String,Object>> getPreOrderByCustomerEmail(String customerEmail){
+		List<HashMap<String,Object>> allPreOrders = getAllPreOrder();
+		List<HashMap<String,Object>> filteredPreOrders = new ArrayList<HashMap<String,Object>>();
+
+		if (customerEmail == null) {
+			return filteredPreOrders;
+		}
+
+        for (HashMap<String,Object> preorder : allPreOrders) {
+			if (customerEmail.equals(preorder.get("customer_email"))) {
+				filteredPreOrders.add(preorder);
+			}
+        }
+
+		return filteredPreOrders;
+	}
+
     public List<HashMap<String,Object>> transformListToHashMap(List<PreOrder> List){
 		List<HashMap<String,Object>> resultList = new ArrayList<HashMap<String,Object>>();
         for(int i = 0; i < List.size(); i++) {
@@ -97,6 +117,13 @@ public class PreOrderServiceImpl extends PreOrderServiceComponent{
 		UUID id = UUID.fromString(idStr);
 		Repository.deleteObject(id);
 		return getAllPreOrder();
+	}
+
+	private int parseInteger(Object value) {
+		if (value instanceof Number) {
+			return ((Number) value).intValue();
+		}
+		return Integer.parseInt((String) value);
 	}
 
 }

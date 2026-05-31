@@ -41,6 +41,7 @@ public class KatalogProdukImpl extends KatalogProdukDecorator {
 	public HashMap<String, Object> toHashMap() {
         HashMap<String, Object> map = record.toHashMap();
         map.put("id_produk", id_produk);
+		map.put("base_id_produk", record.getId_produk());
 		map.put("kondisi", getKondisi());
 
         return map;

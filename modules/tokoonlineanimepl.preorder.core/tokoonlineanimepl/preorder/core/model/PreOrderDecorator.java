@@ -56,6 +56,12 @@ public abstract class PreOrderDecorator extends PreOrderComponent{
 	public void setProduk_ref(String produk_ref) {
 		record.setProduk_ref(produk_ref);
 	}
+	public int getQuantity() {
+		return record.getQuantity();
+	}
+	public void setQuantity(int quantity) {
+		record.setQuantity(quantity);
+	}
 	public String getCustomer_email() {
 		return record.getCustomer_email();
 	}

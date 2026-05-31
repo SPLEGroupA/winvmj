@@ -36,10 +36,15 @@ public class KatalogProdukServiceImpl extends KatalogProdukServiceDecorator {
     public KatalogProduk createKatalogProduk(Map<String, Object> requestBody, UUID id){	
 		KatalogProduk savedKatalogProduk = Repository.getObject(id);
 		String label_eksklusif = parseString(requestBody.get("label_eksklusif"));
-		UUID recordKatalogProdukId_produk = ((KatalogProdukDecorator) savedKatalogProduk).getId_produk();
-		KatalogProduk katalogproduk = record.createKatalogProduk(requestBody, recordKatalogProdukId_produk);
-		KatalogProduk katalogprodukkatalogprodukeksklusif = KatalogProdukFactory.createKatalogProduk("tokoonlineanimepl.katalogproduk.katalogprodukeksklusif.model.KatalogProdukImpl", katalogproduk, label_eksklusif);
-		return katalogprodukkatalogprodukeksklusif;
+		savedKatalogProduk.setNama((String) requestBody.get("nama"));
+		savedKatalogProduk.setHarga(parseInteger(requestBody.get("harga")));
+		savedKatalogProduk.setKategori((String) requestBody.get("kategori"));
+		savedKatalogProduk.setDeskripsi((String) requestBody.get("deskripsi"));
+		savedKatalogProduk.setStok(parseInteger(requestBody.get("stok")));
+		savedKatalogProduk.setGambar_url((String) requestBody.get("gambar_url"));
+		((tokoonlineanimepl.katalogproduk.katalogprodukeksklusif.model.KatalogProdukImpl) savedKatalogProduk)
+			.setLabel_eksklusif(label_eksklusif);
+		return savedKatalogProduk;
 	}
 
     public HashMap<String, Object> updateKatalogProduk(Map<String, Object> requestBody){
@@ -117,5 +122,12 @@ public class KatalogProdukServiceImpl extends KatalogProdukServiceDecorator {
 			return "";
 		}
 		return value.toString();
+	}
+
+	private int parseInteger(Object value) {
+		if (value instanceof Number) {
+			return ((Number) value).intValue();
+		}
+		return Integer.parseInt(value.toString());
 	}
 }

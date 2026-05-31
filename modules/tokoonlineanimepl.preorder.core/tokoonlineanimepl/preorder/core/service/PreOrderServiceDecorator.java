@@ -28,6 +28,10 @@ public abstract class PreOrderServiceDecorator extends PreOrderServiceComponent{
 		return record.getAllPreOrder();
 	}
 
+	public List<HashMap<String,Object>> getPreOrderByCustomerEmail(String customerEmail){
+		return record.getPreOrderByCustomerEmail(customerEmail);
+	}
+
     public HashMap<String, Object> updatePreOrder(Map<String, Object> requestBody){
 		return record.updatePreOrder(requestBody);
 	}

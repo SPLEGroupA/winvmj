@@ -13,6 +13,8 @@ public interface PreOrder {
 	    public void setStatus_preorder(String status_preorder);
 	    public String getProduk_ref();
 	    public void setProduk_ref(String produk_ref);
+	    public int getQuantity();
+	    public void setQuantity(int quantity);
 	    public String getCustomer_email();
 	    public void setCustomer_email(String customer_email);
 	    public String getNama_pelanggan();

@@ -19,20 +19,22 @@ import javax.persistence.OneToMany;
 @Table(name="preorder_impl")
 public class PreOrderImpl extends PreOrderComponent {
 
-	public PreOrderImpl(UUID id_preorder, String tanggal_preorder, String status_preorder, String produk_ref, String customer_email, String nama_pelanggan) {
+	public PreOrderImpl(UUID id_preorder, String tanggal_preorder, String status_preorder, String produk_ref, int quantity, String customer_email, String nama_pelanggan) {
 		this.id_preorder = id_preorder;
 		this.tanggal_preorder = tanggal_preorder;
 		this.status_preorder = status_preorder;
 		this.produk_ref = produk_ref;
+		this.quantity = quantity;
 		this.customer_email = customer_email;
 		this.nama_pelanggan = nama_pelanggan;
 	}
 
-	public PreOrderImpl(String tanggal_preorder, String status_preorder, String produk_ref, String customer_email, String nama_pelanggan) {
+	public PreOrderImpl(String tanggal_preorder, String status_preorder, String produk_ref, int quantity, String customer_email, String nama_pelanggan) {
 		this.id_preorder =  UUID.randomUUID();
 		this.tanggal_preorder = tanggal_preorder;
 		this.status_preorder = status_preorder;
 		this.produk_ref = produk_ref;
+		this.quantity = quantity;
 		this.customer_email = customer_email;
 		this.nama_pelanggan = nama_pelanggan;
 	}
@@ -67,6 +69,13 @@ public class PreOrderImpl extends PreOrderComponent {
 	public void setProduk_ref(String produk_ref) {
 		this.produk_ref = produk_ref;
 	}
+	public int getQuantity() {
+		return this.quantity;
+	}
+
+	public void setQuantity(int quantity) {
+		this.quantity = quantity;
+	}
 	public String getCustomer_email() {
 		return this.customer_email;
 	}
@@ -89,6 +98,7 @@ public class PreOrderImpl extends PreOrderComponent {
 		preorderMap.put("tanggal_preorder",getTanggal_preorder());
 		preorderMap.put("status_preorder",getStatus_preorder());
 		preorderMap.put("produk_ref",getProduk_ref());
+		preorderMap.put("quantity",getQuantity());
 		preorderMap.put("customer_email",getCustomer_email());
 		preorderMap.put("nama_pelanggan",getNama_pelanggan());
 

@@ -9,6 +9,7 @@ public interface PreOrderService {
 	HashMap<String, Object> getPreOrder(String idStr);
     HashMap<String, Object> updatePreOrder(Map<String, Object> requestBody);
     List<HashMap<String,Object>> getAllPreOrder();
+    List<HashMap<String,Object>> getPreOrderByCustomerEmail(String customerEmail);
     List<HashMap<String,Object>> deletePreOrder(Map<String, Object> requestBody);
 	List<HashMap<String, Object>> transformListToHashMap(List<PreOrder> List);
 }
