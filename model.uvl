@@ -10,9 +10,9 @@ features
 					ReviewDanRating
 			KeranjangBelanja
 			CartItem
+			Wishlist
 			AkunPengguna
 				optional
-					Wishlist
 					SistemMembership
 					SistemPoinLoyalitas
 			Pembayaran
